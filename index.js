@@ -33,7 +33,13 @@ const mysqlCon2 = mysql.createConnection({
     database: process.env.MYSQL_DB
 })
 
-const mysqlCon = mysql.createConnection("mysql://root:tBPSU8i4DC8o9i6oWhgS@containers-us-west-184.railway.app:6133/railway")
+const mysqlCon = mysql.createConnection({
+    host: process.env.RAILWAY_HOST,
+    port: process.env.RAILWAY_PORT,
+    user: process.env.RAILWAY_USER,
+    password: process.env.RAILWAY_PASS,
+    database: process.env.RAILWAY_DB
+})
 
 const query = (query, values) => {
     return new Promise((resolve, reject) => {
