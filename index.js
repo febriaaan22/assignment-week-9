@@ -152,7 +152,7 @@ app.delete('/transaction/:id', async (request, response) => {
         response.status(301).json(commonResponse({
             id: id
         }))
-
+        console.log('Data is Deleted')
         response.end()
 
     } catch (err) {
