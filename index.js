@@ -33,7 +33,7 @@ const mysqlCon2 = mysql.createConnection({
     database: process.env.MYSQL_DB
 })
 
-const mysqlCon = mysql.createConnection ("mysql://root:tBPSU8i4DC8o9i6oWhgS@containers-us-west-184.railway.app:6133/railway")
+const mysqlCon = mysql.createConnection("mysql://root:tBPSU8i4DC8o9i6oWhgS@containers-us-west-184.railway.app:6133/railway")
 
 const query = (query, values) => {
     return new Promise((resolve, reject) => {
@@ -84,7 +84,7 @@ try {
             FROM transaction as t
             WHERE t.type = 'expense' and t.user_id = ?
         ) as expense
-        FROM user as u, transaction as t 
+        FROM users as u, transaction as t 
         WHERE u.id = ?
         GROUP BY u.name`,[id, id, id, id] )
 
@@ -107,9 +107,11 @@ app.post('/transaction', async (request, response) => {
         [body.user_id, body.type, body.amount])
 
         response.status(301).json(commonResponse({
-            id: dbData.insertId
+            id: dbData.insertId,
+            message: "berhasil"
         }, null))
         response.end()
+        console.log(dbData)
 
     } catch (err) {
         console.error(err)
@@ -144,6 +146,7 @@ app.put('/transaction/:id', async (request, response) => {
 app.delete('/transaction/:id', async (request, response) => {
     try {
         const id = request.params.id
+        console.log("delete")
         const data = await query("select user_id from transaction where id = ?", id)
         if (Object.keys(data).length === 0) {
             response.status(401).json(commonResponse(null, "data not found"))
