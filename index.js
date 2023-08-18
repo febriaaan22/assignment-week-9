@@ -25,13 +25,15 @@ const commonResponse = function (data, error) {
 //     port: process.env.REDIS_PORT
 // })
 
-const mysqlCon = mysql.createConnection({
+const mysqlCon2 = mysql.createConnection({
     host: process.env.MYSQL_HOST,
     port: process.env.MYSQL_PORT,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASS,
     database: process.env.MYSQL_DB
 })
+
+const mysqlCon = mysql.createConnection ("mysql://root:tBPSU8i4DC8o9i6oWhgS@containers-us-west-184.railway.app:6133/railway")
 
 const query = (query, values) => {
     return new Promise((resolve, reject) => {
@@ -53,7 +55,7 @@ mysqlCon.connect((err) => {
 app.use(bodyParser.json())
 
 app.get('/user', (request, response) => {
-    mysqlCon.query("select * from revou.user", (err, result, fields) => {
+    mysqlCon.query("select * from users", (err, result, fields) => {
         if (err) {
             console.error(err)
             response.status(401).json(coomonResponse(null, "server error"))
@@ -100,7 +102,7 @@ app.post('/transaction', async (request, response) => {
     try {
         const body = request.body
 
-        const dbData = await query(`insert into revou.transaction 
+        const dbData = await query(`insert into transaction 
         (user_id, type, amount) values (?, ?, ?)`,
         [body.user_id, body.type, body.amount])
 
@@ -121,7 +123,7 @@ app.put('/transaction/:id', async (request, response) => {
     try {
         const body = request.body
 
-        const dbData = await query(`UPDATE Revou.transaction
+        const dbData = await query(`UPDATE transaction
         SET user_id=?, type=?, amount=?
         WHERE id=?;`,
         [body.user_id, body.type, body.amount, request.params.id])
@@ -142,13 +144,13 @@ app.put('/transaction/:id', async (request, response) => {
 app.delete('/transaction/:id', async (request, response) => {
     try {
         const id = request.params.id
-        const data = await query("select user_id from revou.transaction where id = ?", id)
+        const data = await query("select user_id from transaction where id = ?", id)
         if (Object.keys(data).length === 0) {
             response.status(401).json(commonResponse(null, "data not found"))
             response.end()
             return
         }
-        await query("delete from revou.transaction where id = ?", id)
+        await query("delete from transaction where id = ?", id)
         response.status(301).json(commonResponse({
             id: id
         }))
