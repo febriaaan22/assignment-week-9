@@ -64,7 +64,38 @@ mysqlCon.connect((err) => {
 
 app.use(bodyParser.json())
 
+app.get('/user/:id', async (request, response) => {
+    try {
+        const id = request.params.id
+        const dbData = await query (
+            `SELECT u.id , u.name , u.address, (
+                SELECT Sum(t.amount) - 
+                    (SELECT Sum(t.amount)
+                    FROM transaction as t 
+                    WHERE t.type = 'expense' and t.user_id = ?)
+                FROM transaction as t 
+                WHERE t.type = 'income' and t.user_id = ?
+            ) as balance, (
+                SELECT SUM(t.amount)
+                FROM transaction as t
+                WHERE t.type = 'expense' and t.user_id = ?
+            ) as expense
+            FROM users as u, transaction as t 
+            WHERE u.id = ?
+            GROUP BY u.name`,[id, id, id, id] )
+    
+        response.status(301).json(commonResponse(dbData[0], null))
+        response.end()
+    } catch (err) {
+        console.error(err)
+        response.status(401).json(commonResponse(null, "server error"))
+        response.end()
+        return
+        }
+    })
+
 app.get('/user', (request, response) => {
+    response.send(mysqlCon)
     mysqlCon.query("select * from users", (err, result, fields) => {
         if (err) {
             console.error(err)
