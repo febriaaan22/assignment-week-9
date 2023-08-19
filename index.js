@@ -68,7 +68,7 @@ app.get('/user', (request, response) => {
     mysqlCon.query("select * from users", (err, result, fields) => {
         if (err) {
             console.error(err)
-            response.status(401).json(coomonResponse(null, "server error"))
+            response.status(401).json(commonResponse(null, "server error"))
             response.end()
             return
         }
