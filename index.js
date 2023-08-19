@@ -96,7 +96,6 @@ app.get('/user/:id', async (request, response) => {
     })
 
 app.get('/user', (request, response) => {
-    // response.send(mysqlCon)
     mysqlCon.query("select * from users", (err, result, fields) => {
         if (err) {
             console.error(err)
