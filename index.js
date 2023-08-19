@@ -33,16 +33,15 @@ const commonResponse = function (data, error) {
 //     database: process.env.MYSQL_DB
 // })
 //
-const mysqlCon1 = mysql.createConnection({
+
+const mysqlCon = mysql.createConnection({
     host: process.env.RAILWAY_HOST,
     port: process.env.RAILWAY_PORT,
     user: process.env.RAILWAY_USER,
     password: process.env.RAILWAY_PASS,
-    database: process.env.RAILWAY_DB,
-    URL: process.env.RAILWAY_URL
+    database: process.env.RAILWAY_DB
 })
 
-const mysqlCon = mysql.createConnection (`${process.env.RAILWAY_URL}`)
 const query = (query, values) => {
     return new Promise((resolve, reject) => {
         mysqlCon.query(query, values, (err, result, fields) => {
