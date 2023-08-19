@@ -25,21 +25,22 @@ const commonResponse = function (data, error) {
 //     port: process.env.REDIS_PORT
 // })
 
-const mysqlCon2 = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASS,
-    database: process.env.MYSQL_DB
-})
-//
-// const mysqlCon = mysql.createConnection({
-//     host: process.env.RAILWAY_HOST,
-//     port: process.env.RAILWAY_PORT,
-//     user: process.env.RAILWAY_USER,
-//     password: process.env.RAILWAY_PASS,
-//     database: process.env.RAILWAY_DB
+// const mysqlCon2 = mysql.createConnection({
+//     host: process.env.MYSQL_HOST,
+//     port: process.env.MYSQL_PORT,
+//     user: process.env.MYSQL_USER,
+//     password: process.env.MYSQL_PASS,
+//     database: process.env.MYSQL_DB
 // })
+//
+const mysqlCon1 = mysql.createConnection({
+    host: process.env.RAILWAY_HOST,
+    port: process.env.RAILWAY_PORT,
+    user: process.env.RAILWAY_USER,
+    password: process.env.RAILWAY_PASS,
+    database: process.env.RAILWAY_DB,
+    URL: process.env.RAILWAY_URL
+})
 
 const mysqlCon = mysql.createConnection (`${process.env.RAILWAY_URL}`)
 const query = (query, values) => {
