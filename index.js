@@ -36,7 +36,7 @@ const commonResponse = function (data, error) {
 
 const mysqlCon = mysql.createConnection({
     host: process.env.RAILWAY_HOST,
-    port: process.env.RAILWAY_PORT,
+    port: parseInt(process.env.RAILWAY_PORT),
     user: process.env.RAILWAY_USER,
     password: process.env.RAILWAY_PASS,
     database: process.env.RAILWAY_DB
