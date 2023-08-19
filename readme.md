@@ -17,7 +17,7 @@ Hello, I'm Ireng Febrian Sanjaya. I'm entering week 9 and I practicing in making
 
 ## Deployment
 
-Here's the link for you to access my website: https://weak-lime-seagull-belt.cyclic.app
+Here's the link for you to access my website: https://famous-jade-spacesuit.cyclic.cloud/user/
 
 ## Contact Me
 This project is far from perfect and I need your feedback to improve this project <br>
