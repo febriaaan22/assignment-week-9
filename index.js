@@ -32,7 +32,7 @@ const mysqlCon2 = mysql.createConnection({
     password: process.env.MYSQL_PASS,
     database: process.env.MYSQL_DB
 })
-
+//
 // const mysqlCon = mysql.createConnection({
 //     host: process.env.RAILWAY_HOST,
 //     port: process.env.RAILWAY_PORT,
