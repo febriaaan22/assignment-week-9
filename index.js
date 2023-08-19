@@ -140,6 +140,7 @@ try {
 })
 
 app.post('/transaction', async (request, response) => {
+    console.log('transaction')
     try {
         const body = request.body
 
