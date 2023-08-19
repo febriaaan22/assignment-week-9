@@ -44,7 +44,7 @@ I'm using postman to test my API and here is some example that I tested below;
 ![PUTDELETE](Readme%20Documentation/Delete.png)
 ## Deployment
 
-Here's the link for you to access my website: https://weak-lime-seagull-belt.cyclic.app
+Here's the link for you to access my website: https://famous-jade-spacesuit.cyclic.cloud/user/
 
 ## Contact Me
 This project is far from perfect and I need your feedback to improve this project <br>
