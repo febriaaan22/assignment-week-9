@@ -19,13 +19,13 @@ For this project I run MySQL on docker and using Dbeaver as the viewer and makin
 ## Postman for Test API
 I'm using postman to test my API and here is some example that I tested below;
 
-1. **Get** 'api/user/:id' with id = number
+1. **Get** `api/user/:id` with id = number
 ![GET](Readme%20Documentation/PostmanGet.png)
-2. **Put** 'api/transaction/:id' with id =number
+2. **Put** `api/transaction/:id` with id =number
 ![PUT](Readme%20Documentation/PostmanPut.png)
-3. **Post** 'api/transaction'
+3. **Post** `api/transaction`
 ![POST](Readme%20Documentat
-4. **Delete** 'api/transaction/:id' with id = number
+4. **Delete** `api/transaction/:id` with id = number
 ![DELETE](Readme%20Documentation/PostmanDelete.png)
 
 
