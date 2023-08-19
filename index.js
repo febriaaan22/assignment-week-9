@@ -32,7 +32,7 @@ const commonResponse = function (data, error) {
 //     password: process.env.MYSQL_PASS,
 //     database: process.env.MYSQL_DB
 // })
-//
+///
 
 const mysqlCon = mysql.createConnection({
     host: process.env.RAILWAY_HOST,
@@ -140,7 +140,6 @@ try {
 })
 
 app.post('/transaction', async (request, response) => {
-    console.log('transaction')
     try {
         const body = request.body
 
