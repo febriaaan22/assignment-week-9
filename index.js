@@ -56,7 +56,7 @@ const query = (query, values) => {
 
 mysqlCon.connect((err) => {
     if (err) {
-        console.log("database error", error)
+        console.log("database error", err)
         return
     }
     console.log("mysql successfully connected")
