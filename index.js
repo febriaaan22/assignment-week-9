@@ -39,7 +39,8 @@ const mysqlCon = mysql.createConnection({
     port: parseInt(process.env.RAILWAY_PORT),
     user: process.env.RAILWAY_USER,
     password: process.env.RAILWAY_PASS,
-    database: process.env.RAILWAY_DB
+    database: process.env.RAILWAY_DB,
+    insecureAuth: true
 })
 
 const query = (query, values) => {
